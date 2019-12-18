@@ -39,6 +39,7 @@ class MainContainer extends Component {
     }
 
     handleSort = (sortTerm) => {
+      this.clearFiltered()
       if(sortTerm === 'Alphabetically'){
         let sortedArray = this.state.allStocks.sort((a,b) => a.name > b.name ? 1 : -1)
         this.setState({allStocks: sortedArray})
@@ -56,6 +57,10 @@ class MainContainer extends Component {
       // console.log(filterTerm)
       let filteredStocks = this.state.allStocks.filter(stock => stock.type === filterTerm)
       this.setState({filteredStocks: filteredStocks})
+    }
+
+    clearFiltered = () => {
+      this.setState({filteredStocks: []})
     }
     
     whatToShow = () =>{
