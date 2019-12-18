@@ -55,8 +55,12 @@ class MainContainer extends Component {
 
     filterStocks = (filterTerm) => {
       // console.log(filterTerm)
-      let filteredStocks = this.state.allStocks.filter(stock => stock.type === filterTerm)
-      this.setState({filteredStocks: filteredStocks})
+      if(filterTerm === 'All'){
+        this.setState({filteredStocks: this.state.allStocks})
+      }else{
+        let filteredStocks = this.state.allStocks.filter(stock => stock.type === filterTerm)
+        this.setState({filteredStocks: filteredStocks})
+      }
     }
 
     clearFiltered = () => {
